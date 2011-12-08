@@ -32,8 +32,7 @@ class FetchHandler(webapp.RequestHandler):
 		doc = feedparser.parse(url)
 		self.response.out.write(doc.feed.title)
 		for entry in doc.entries:
-			self.response.out.write(entry.title)
-			self.response.out.write(entry.link)
+			self.response.out.write("<a href=%s>%s<a>" % (entry.link, entry.title))
 
 
 handlers = [
